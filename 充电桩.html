@@ -1,0 +1,179 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=line-simple&code=PYBwLglsB2AEC8sDeBYAULTsBGBDAxgNYDmATsAK7QAmAwsADbCkBcA5KcXgBQAMANAKEBKNv3RZYkMAwCmLZBMlYwsgB5gFbMUuVT1YAMpgAnnIWoMe5fkbMtAYgBmLnVb0BfXbA_j3sOWJZGgtvTGYIYM1YNgA3WVJIfFwGNz0AZwALYAB3BTBSClk_PVIIYkzotgBGXgBSNOUTLXwohMbJCFUAWwB1CGowTIUAZhLlLtlugAlZcsrRgTDYSe6AcVwQBQAmJf9MVQ1jM3lFfaxbJlYY51dxvScYIwgAL1PqgDZ75QYIaFlZvNotUABzfSRlfDDM7WLAgBKtaDRSywySXew3FxODqox5Iwyvd5fZaSXwknzginLR6kbq4MCqa7QXDdWQIAB8MOs6RyXShsG4zNZwi5sOS6TZbEAfJ6ALHlADaKgApXNgsckQ2RgCikODcVXKaXyhUAHVIMVgAGpdZI2FhrWbYNURgA6XhmtgNS2wYQAbl14slgFVlQCy8oBQxUAFwnKj2kdWa7UezBsINh422uOmm3m-28R3VV3u856b2-3ASmKAZDkFYAwjMA--oR_PKKMarUC1NscvV42mi11vTW-MZ7aOgCsubYHsL3dgfpigCvAys1lUTzANmPNxc22ftk0ptd9vt2gDsABZHYeR2OfRPqLInLgKAxNB7sFHcIQL7CvOcyf4v5IwMBGJAWyilgWS5PkhTFMsBTlEE1xsKsOKYCk5TQOwchOGAiE4MwV6kPQVxaJwPDbIOg78CRZEUfwjojKIlJ4EQZCUDQ-EYhwXC4NwDr8GRIwCI6Hx0cs2A4Qk_SDNC1SUpgIC4NQ1B_MQChkeStjQE4fynAURSUjSdIMgkWhINgHgADxPgA9OygAGyoAK9YsEg1AeA0lKHEYpjmMBsJ4s8bwKKC0k2HYcG3NigUfqS4ISmUsjpAoADaywotYpjwloICRFhS5yRAFBxbA8VsIe9RiDEpENAAuoFiKMglbB8S5ZUlVV5LZPEpAAILQBA-lQKhsA3gwEqBS8_l7LCDC4NgsgMKEE4gMA6RdH1LRtKQWVYHp9K1QKIrwJyyWorAy5Ntob6oj-qKQtCh2on-YApHNR2SD5BJ-bA2xjKm6IhViG2Rbql1isFjj7rgIL4AAnGFuqvYS_lgrqvz_ICFTRHx4WBdQ9K4Aluq3bCsQpEU_lfWuQqnPqir_VgqzHJ5BOoj9jgjNssgguzNOYED1g83ojN6ETDAk5m2aBZIFNaIm4bi7TPT06cAvWMzNyDtgyROLwXNUhOfPKErkhCyLA4qeTLKU22Nay5gdMeYr30gzc1DYNgIwfLI2t6wDE4G1gRunEeJ7W7AksznO2u2ycT3PZgKtsA4kPVPgh5OPunuy175ItXWk3TQwAAymnR7CoF5ANKTDeSes89nHhekAA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+    backgroundColor:'rgba(0,0,0,0)',
+    title: {
+        text: '',
+        textStyle: {
+            color: '#fff',
+        }
+    },
+    legend: {
+      orient: 'vertical',
+      show: true,
+      right: '10%',
+      y: 'center',
+      itemWidth: 3,
+      itemHeight: 30,
+      itemGap: 20,
+      textStyle: {
+        color: '#fff',
+        fontSize: 16,
+        lineHeight: 18,
+        rich: {
+          percent: {
+            color: '#fff',
+            fontSize: 16,
+          },
+        },
+      },
+      formatter: name => {
+        switch (name) {
+          case '社会公用':
+            return (
+              '社会公用\r ' +
+              '   ' + 13.0+'%'
+            );
+          case '单位内部':
+            return (
+              '单位内部\r' +
+              '    ' + 10.1+'%'
+            );
+          case '专用领域':
+            return (
+              '专用领域\r ' +
+              '   ' + 2.5+'%'
+            );
+          case '自用领域':
+            return (
+              '自用领域\r ' +
+              '   ' + 74.4+'%'
+            );
+          default:
+            break;
+        }
+      },
+    },
+    tooltip: {
+      show: true,
+      trigger: 'item',
+      align:'left',
+      borderColor: 'rgba(255,255,255,.3)',
+      backgroundColor: 'rgba(13,5,30,.6)',
+      borderWidth: 1,
+        padding: 5,
+        confine: true,
+      formatter: '{b}<br/>占比:{d}%',
+      textStyle: {
+            fontSize: 18,
+            color: '#fff',
+        }
+    },
+     series: [
+      {
+        type: 'pie',
+        radius: ['40%', '55%'],
+        center: ['30%', '50%'],
+        hoverAnimation: false,
+        z: 10,
+        label: {
+          position: 'center',
+          formatter: () => {
+            return '';
+          },
+          rich: {
+            total: {
+              fontSize: 23,
+              color: '#fff',
+            },
+          },
+          color: '#7a8c9f',
+          fontSize: 18,
+          lineHeight: 30,
+        },
+        data: [
+          {
+            value: 13,
+            name: '社会公用',
+            itemStyle: {
+              color: '#32e8e8',
+            },
+          },
+          {
+            value: 10.1,
+            name: '单位内部',
+            itemStyle: {
+              color: '#5bcaf0',
+            },
+          },
+          {
+            value: 2.5,
+            name: '专用领域',
+            itemStyle: {
+              color: '#dbb36e',
+            },
+          },
+          {
+            value: 74.4,
+            name: '自用领域',
+            itemStyle: {
+              color: '#91c4f7',
+            },
+          },
+       
+        ],
+        labelLine: {
+          show: false,
+        },
+      },
+    ],
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
